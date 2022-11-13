@@ -4,6 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/activity_main.xml" value="0.23007246376811594" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/file_manager.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/filemain.xml" value="0.1" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/fragment_day_add.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/fragment_months.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/fragment_today.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/fragment_weeks.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/nav_bottom.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/nav_header.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/leej/AndroidStudioProjects/calenderMemo/app/src/main/res/layout/row.xml" value="0.1680327868852459" />
       </map>
     </option>
   </component>
@@ -12,12 +21,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.3619791666666667" />
-      </ProjectState>
-    </option>
   </component>
 </project>
