@@ -2,8 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:title="메모"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            />
+            android:id="@+id/nav_bar_menu1"
+            android:title="캘린더"
+            android:icon="@drawable/calendar_menuicon"/>
+        <item
+            android:id="@+id/nav_bar_menu2"
+            android:title="파일"
+            android:icon="@drawable/document"/>
     </group>
 </menu>
