@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FileTree">
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,7 +15,7 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:title="File Tree" />
+            app:title="File Tree"/>
         <TextView
             android:id="@+id/tvPath"
             android:layout_width="match_parent"
@@ -27,7 +26,5 @@
             android:layout_width="match_parent"
             android:layout_height="500dp" >
         </ListView>
-
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
