@@ -22,7 +22,7 @@ public class AndroidExplorerActivity extends ListActivity {
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.filemain);
         myPath = (TextView)findViewById(R.id.path);
         getDir(root);
     }
