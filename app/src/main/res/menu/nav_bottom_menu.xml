@@ -17,7 +17,7 @@
         android:icon="@drawable/today"/>
     <item
         android:id="@+id/plus"
-        android:title="일정추가"
+        android:title="To Do List"
         android:enabled="true"
-        android:icon="@drawable/plus"/>
+        android:icon="@drawable/todolist"/>
 </menu>

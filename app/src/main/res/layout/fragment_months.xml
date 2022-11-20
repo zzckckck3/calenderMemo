@@ -14,10 +14,26 @@
         android:orientation="vertical">
 
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/material_calendar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:mcv_selectionColor="#6D616F"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/schedule"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"/>
     </LinearLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="60dp"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/plus"
+        android:backgroundTint="#939393" />
 </FrameLayout>

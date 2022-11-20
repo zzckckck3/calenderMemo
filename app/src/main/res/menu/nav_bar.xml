@@ -7,7 +7,7 @@
             android:icon="@drawable/calendar_menuicon"/>
         <item
             android:id="@+id/nav_bar_menu2"
-            android:title="파일"
-            android:icon="@drawable/document"/>
+            android:title="폴더"
+            android:icon="@drawable/folder"/>
     </group>
 </menu>

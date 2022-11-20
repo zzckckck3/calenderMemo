@@ -46,18 +46,6 @@
 
       </FrameLayout>
 
-      <!--> <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:padding="16dp">
-
-
-         <CalendarView
-             android:id="@+id/calendarView"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content" />
-      </RelativeLayout> -->
-
    </LinearLayout>
 
    <com.google.android.material.navigation.NavigationView
