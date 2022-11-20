@@ -22,7 +22,7 @@ public class AndroidExplorerActivity extends ListActivity {
     @Override
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.filemain);
+        setContentView(R.layout.activity_main);
         myPath = (TextView)findViewById(R.id.path);
         getDir(root);
     }
@@ -53,7 +53,7 @@ public class AndroidExplorerActivity extends ListActivity {
                 item.add(file.getName());
         }
 
-        ArrayAdapter<String> fileList = new ArrayAdapter<String>(this, R.layout.row, item);
+        ArrayAdapter<String> fileList = new ArrayAdapter<String>(this, R.layout.row, R.id.rowtext, item);
         setListAdapter(fileList);
     }
 
@@ -66,7 +66,7 @@ public class AndroidExplorerActivity extends ListActivity {
                 getDir(path.get(position));
             else{
                 new AlertDialog.Builder(this).
-                        setIcon(R.drawable.menu).//버튼 추가(변경)해야함.
+                        setIcon(R.drawable.ic_launcher_background).//버튼 추가(변경)해야함.
                         setTitle("[" + file.getName() + "]").
                         setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
