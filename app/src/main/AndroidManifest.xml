@@ -14,7 +14,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".MemoActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,14 +32,17 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".MemoActivity"
             android:exported="false"/>
+
         <activity
             android:name=".EditNoteActivity"
             android:parentActivityName=".MemoActivity" />
+
         <activity
             android:name=".AndroidExplorerActivity"
             android:exported="false"/>
+
     </application>
 
 </manifest>
