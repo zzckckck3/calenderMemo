@@ -25,8 +25,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendermemo.adapters.NotesAdapter;
-import com.example.calendermemo.callbacks.MainActionModeCallback;
-import com.example.calendermemo.callbacks.NoteEventListener;
+import com.example.calendermemo.adapters.callbacks.MainActionModeCallback;
+import com.example.calendermemo.adapters.callbacks.NoteEventListener;
 import com.example.calendermemo.db.NotesDB;
 import com.example.calendermemo.db.NotesDao;
 import com.example.calendermemo.model.Note;

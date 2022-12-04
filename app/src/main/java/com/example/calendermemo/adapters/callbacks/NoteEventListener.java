@@ -1,4 +1,4 @@
-package com.example.calendermemo.callbacks;
+package com.example.calendermemo.adapters.callbacks;
 
 import com.example.calendermemo.model.Note;
 

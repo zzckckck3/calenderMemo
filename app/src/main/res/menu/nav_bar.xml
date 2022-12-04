@@ -6,6 +6,10 @@
             android:title="캘린더"
             android:icon="@drawable/calendar_menuicon"/>
         <item
+            android:id="@+id/nav_bar_memo"
+            android:title="메모"
+            android:icon="@drawable/notes"/>
+        <item
             android:id="@+id/nav_bar_menu2"
             android:title="폴더"
             android:icon="@drawable/folder"/>
