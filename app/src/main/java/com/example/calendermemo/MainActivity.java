@@ -58,12 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.nav_bar_menu1:
-                        Toast.makeText(getApplicationContext(),"메인 화면입니다",Toast.LENGTH_SHORT).show();
                     case R.id.nav_bar_menu2:
                         Intent intent = new Intent(MainActivity.this, AndroidExplorerActivity.class);
                         startActivity(intent);
-                        finish();
                 }
                 return true;
             }
@@ -103,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.setting_save:
                 return true;
+            case R.id.setting_search:
+                Intent intent = new Intent(MainActivity.this, search_Activity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

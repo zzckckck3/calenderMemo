@@ -7,5 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#EDEDED</color>
+    <color name="gray">#f5f5dc</color>
+    <color name="littleRed">#F05650</color>
+
+    <!-- Todolist color -->
+    <color name="main_color">#565c6e</color>
+    <color name="list_color_done">#A9EFBF</color>
+    <color name="list_color_default">#dcd4d0</color>
+    <color name="light_main_color">#dcdcdc</color>
 </resources>
