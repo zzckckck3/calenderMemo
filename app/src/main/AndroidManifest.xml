@@ -37,6 +37,9 @@
         <activity
             android:name=".EditNoteActivity"
             android:parentActivityName=".MemoActivity" />
+        <activity
+            android:name=".AndroidExplorerActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
