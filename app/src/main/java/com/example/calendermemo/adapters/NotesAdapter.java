@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendermemo.R;
-import com.example.calendermemo.callbacks.NoteEventListener;
+import com.example.calendermemo.adapters.callbacks.NoteEventListener;
 import com.example.calendermemo.model.Note;
 import com.example.calendermemo.utils.NoteUtils;
 

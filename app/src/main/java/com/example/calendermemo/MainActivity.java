@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,7 +20,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Intent intent;
     Fragment_months fragment_months;
     Fragment_weeks fragment_weeks;
     Fragment_today fragment_today;
@@ -51,6 +53,21 @@ public class MainActivity extends AppCompatActivity {
         fragment_today = new Fragment_today();
         fragment_day_add = new Fragment_day_add();
         getSupportFragmentManager().beginTransaction().replace(R.id.containers,fragment_months).commit();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_bar_memo:
+                        intent = new Intent(MainActivity.this, MemoActivity.class);
+                        startActivity(intent);
+                    case R.id.nav_bar_menu2:
+                        intent = new Intent(MainActivity.this, AndroidExplorerActivity.class);
+                        startActivity(intent);
+                }
+                return true;
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_bottom);
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -86,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.setting_save:
                 return true;
+            case R.id.setting_search:
+                Intent intent = new Intent(MainActivity.this, search_Activity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
