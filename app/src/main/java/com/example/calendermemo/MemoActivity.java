@@ -331,8 +331,6 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         recyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
-
-
                     }
                 })
                 .setCancelable(false)
@@ -346,7 +344,6 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
         if (position == 1){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
-            finish();
         }
         if(position == 3){
             Intent intent = new Intent(getApplicationContext(), AndroidExplorerActivity.class);

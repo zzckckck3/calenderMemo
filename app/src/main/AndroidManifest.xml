@@ -24,6 +24,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".search_Activity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
+        </activity>
+
+        <activity
             android:name=".add_schedule_Activity"
             android:exported="false">
             <meta-data
@@ -41,8 +51,11 @@
 
         <activity
             android:name=".AndroidExplorerActivity"
-            android:exported="false"/>
-
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
     </application>
 

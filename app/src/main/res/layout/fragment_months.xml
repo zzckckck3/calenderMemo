@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="550dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment_months">
 
@@ -16,7 +16,7 @@
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/material_calendar"
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="370dp"
             app:mcv_selectionColor="#6D616F" />
 
         <TextView
@@ -24,12 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="18dp"
             android:text="2022년 12월 4일"
+            android:textStyle="bold"
             android:textColor="@color/black" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/schedule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:overScrollMode="never"/>
     </LinearLayout>
 
@@ -38,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="5dp"
         android:layout_gravity="bottom|end"
         android:src="@drawable/plus"
         android:backgroundTint="@color/littleRed" />

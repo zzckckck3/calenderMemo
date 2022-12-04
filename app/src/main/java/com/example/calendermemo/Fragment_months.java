@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.calendermemo.Adapter.ScheduleAdapter;
-import com.example.calendermemo.db.DBHelper;
+import com.example.calendermemo.adapters.ScheduleAdapter;
 import com.example.calendermemo.db.DBLoader;
+import com.example.calendermemo.model.ScheduleData;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -30,6 +30,8 @@ public class Fragment_months extends Fragment {
     private MaterialCalendarView calendarView;
     private RecyclerView rv_schedule;
     private ScheduleAdapter scheduleAdapter;
+    private String selectDay = "";
+    private String changeDay = "";
     private DBLoader dbloader;
     private TextView date_text;
 
@@ -48,6 +50,15 @@ public class Fragment_months extends Fragment {
         scheduleAdapter = new ScheduleAdapter(context);
         rv_schedule.setAdapter(scheduleAdapter);
         rv_schedule.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
+        rv_schedule.setHasFixedSize(true);
+
+        /*String today_date;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        today_date = String.valueOf(dateFormat.format(System.currentTimeMillis()));
+
+        dbloader = new DBLoader(context);
+        scheduleAdapter.setList(dbloader.getScheduleList(today_date.replace(".","")));
+        scheduleAdapter.notifyDataSetChanged();*/
 
         // calendar view
         calendarView.setTitleFormatter(new MonthArrayTitleFormatter(getResources().getTextArray(R.array.custom_months)));
@@ -57,21 +68,32 @@ public class Fragment_months extends Fragment {
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() { // 달력의 날짜 클릭 이벤트
             @Override
             public void onDateSelected(MaterialCalendarView widget,CalendarDay date, boolean selected) {
+                String days = "";
                 int year = date.getYear();
                 int month = date.getMonth();
                 int day = date.getDay();
 
-                String selectDay = Integer.toString(year)+Integer.toString(month)+Integer.toString(day);
+                if(day < 10){
+                    days = "0"+Integer.toString(day);
+                }
+                else{
+                    days = Integer.toString(day);
+                }
+                selectDay = Integer.toString(year)+Integer.toString(month) + days;
+
                 dbloader = new DBLoader(context);
                 scheduleAdapter.setList(dbloader.getScheduleList(selectDay));
                 scheduleAdapter.notifyDataSetChanged();
-
                 date_text.setText(Integer.toString(year)+"년 "+Integer.toString(month)+"월 "+Integer.toString(day)+"일");
             }
         });
-
+        //dbloader = new DBLoader(context);
+        //scheduleAdapter.setList(dbloader.getScheduleList(calendarView.getSelectedDates().toString()));
+        //scheduleAdapter.notifyDataSetChanged();
+        System.out.println(selectDay);
         return v;
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
@@ -85,5 +107,6 @@ public class Fragment_months extends Fragment {
             }
         });
     }
+
 }
 

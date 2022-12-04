@@ -19,7 +19,7 @@ public class AndroidExplorerActivity extends ListActivity {
     private List<String> item = null;
     private List<String> path = null;
 
-    private String root = "/sdcard/";
+    private String root = "/mnt/sdcard/";
     private TextView myPath;
 
     @Override

@@ -18,6 +18,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.calendermemo.db.DBLoader;
+import com.example.calendermemo.model.ScheduleData;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.text.SimpleDateFormat;
@@ -65,7 +66,7 @@ public class add_schedule_Activity extends AppCompatActivity {
 
 
     public void setListener() {
-        btn_start_date.setOnClickListener(new View.OnClickListener() {
+        btn_start_date.setOnClickListener(new View.OnClickListener() { //시작 날짜
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
@@ -83,7 +84,7 @@ public class add_schedule_Activity extends AppCompatActivity {
             }
         });
 
-        btn_finish_date.setOnClickListener(new View.OnClickListener() {
+        btn_finish_date.setOnClickListener(new View.OnClickListener() { //종료 날짜
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();

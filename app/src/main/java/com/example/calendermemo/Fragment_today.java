@@ -1,7 +1,7 @@
 package com.example.calendermemo;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,15 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.calendermemo.Adapter.ScheduleAdapter;
+import com.example.calendermemo.adapters.ScheduleAdapter;
 import com.example.calendermemo.db.DBLoader;
+import com.example.calendermemo.model.ScheduleData;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Fragment_today extends Fragment {
-    private ArrayList<ScheduleData> scheduleData;
+    //private ArrayList<ScheduleData> scheduleData;
     private ScheduleAdapter scheduleAdapter;
+    private ScheduleData item;
     private String today_date;
     private DBLoader dbloader;
     private String selectDay;
@@ -51,6 +53,7 @@ public class Fragment_today extends Fragment {
         dbloader = new DBLoader(context);
         scheduleAdapter.setList(dbloader.getScheduleList(selectDay));
         scheduleAdapter.notifyDataSetChanged();
+
 
         return v;
     }

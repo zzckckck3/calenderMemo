@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/setting_search"
+        android:id="@+id/search_btn"
         android:icon="@drawable/search_icon"
         android:title="검색"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/setting_save"
+        android:id="@+id/setting_btn"
         android:icon="@drawable/ic_baseline_settings_24"
         android:title="설정"
         app:showAsAction="always"/>

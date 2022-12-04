@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
+                    case R.id.nav_bar_menu1:
+                        intent = new Intent(MainActivity.this, MainActivity.class);
+                        startActivity(intent);
                     case R.id.nav_bar_memo:
                         intent = new Intent(MainActivity.this, MemoActivity.class);
                         startActivity(intent);
@@ -99,13 +102,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.setting_save:
+            case R.id.setting_btn:
                 return true;
-            case R.id.setting_search:
-                Intent intent = new Intent(MainActivity.this, search_Activity.class);
+            case R.id.search_btn:
+                intent = new Intent(getApplicationContext(), search_Activity.class);
                 startActivity(intent);
+
         }
         return super.onOptionsItemSelected(item);
     }

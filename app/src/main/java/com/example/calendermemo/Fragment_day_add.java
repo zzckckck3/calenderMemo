@@ -18,7 +18,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.calendermemo.Adapter.todoAdapter;
+import com.example.calendermemo.adapters.todoAdapter;
+import com.example.calendermemo.model.TodoData;
 
 
 import java.text.SimpleDateFormat;
