@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -86,13 +88,15 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
     private void setupNavigation(Bundle savedInstanceState, Toolbar toolbar) {
 
         List<IDrawerItem<?>> iDrawerItems = new ArrayList<>();
-        iDrawerItems.add(new PrimaryDrawerItem().withName("Home").withIcon(R.drawable.ic_home_black_24dp));
-        iDrawerItems.add(new PrimaryDrawerItem().withName("Notes").withIcon(R.drawable.ic_note_black_24dp));
+        iDrawerItems.add(new PrimaryDrawerItem().withName("홈 화면").withIcon(R.drawable.ic_home_black_24dp));
+        iDrawerItems.add(new PrimaryDrawerItem().withName("노트").withIcon(R.drawable.ic_note_black_24dp));
+        iDrawerItems.add(new PrimaryDrawerItem().withName("폴더").withIcon(R.drawable.folder_gray));
+        //call calender again
 
         List<IDrawerItem<?>> stockyItems = new ArrayList<>();
 
         SwitchDrawerItem switchDrawerItem = new SwitchDrawerItem()
-                .withName("Dark Theme")
+                .withName("어두운 테마")
                 .withChecked(theme == R.style.AppTheme_Dark)
                 .withIcon(R.drawable.ic_dark_theme)
                 .withOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -110,7 +114,7 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
                     }
                 });
 
-        stockyItems.add(new PrimaryDrawerItem().withName("Settings").withIcon(R.drawable.ic_settings_black_24dp));
+        stockyItems.add(new PrimaryDrawerItem().withName("설정").withIcon(R.drawable.ic_settings_black_24dp));
         stockyItems.add(switchDrawerItem);
 
         // navigation menu header
@@ -316,7 +320,6 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
                 .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // TODO: 28/09/2018 delete note
                         dao.deleteNote(swipedNote);
                         notes.remove(swipedNote);
                         adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
@@ -327,7 +330,6 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        // TODO: 28/09/2018  Undo swipe and restore swipedNote
                         recyclerView.getAdapter().notifyItemChanged(viewHolder.getAdapterPosition());
 
 
@@ -340,6 +342,16 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
 
     @Override
     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+
+        if (position == 1){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        if(position == 3){
+            Intent intent = new Intent(getApplicationContext(), AndroidExplorerActivity.class);
+            startActivity(intent);
+        }
 
         Toast.makeText(this, "" + position, Toast.LENGTH_SHORT).show();
         return false;
