@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.setting_btn:
+                intent = new Intent(getApplicationContext(), SettingActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.search_btn:
                 intent = new Intent(getApplicationContext(), search_Activity.class);
