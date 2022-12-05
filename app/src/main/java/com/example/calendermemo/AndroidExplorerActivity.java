@@ -19,7 +19,7 @@ public class AndroidExplorerActivity extends ListActivity {
     private List<String> item = null;
     private List<String> path = null;
 
-    private String root = "/mnt/sdcard/";
+    private String root = "/sdcard/";
     private TextView myPath;
 
     @Override
@@ -33,10 +33,8 @@ public class AndroidExplorerActivity extends ListActivity {
 
     private void getDir(String dirPath){
         myPath.setText("Location: " + dirPath);
-
         item = new ArrayList<String>();
         path = new ArrayList<String>();
-
         File f = new File(dirPath);
         File[] files = f.listFiles();
 
@@ -46,7 +44,6 @@ public class AndroidExplorerActivity extends ListActivity {
             item.add("../");
             path.add(f.getParent());
         }
-
         for(int i = 0; i< files.length;i++){
             File file = files[i];
             path.add(file.getPath());
@@ -56,7 +53,6 @@ public class AndroidExplorerActivity extends ListActivity {
             else
                 item.add(file.getName());
         }
-
         ArrayAdapter<String> fileList = new ArrayAdapter<String>(this, R.layout.row,R.id.row_textview, item);
         setListAdapter(fileList);
     }

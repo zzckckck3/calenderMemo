@@ -24,12 +24,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
     private NoteEventListener listener;
     private boolean multiCheckMode = false;
 
-
     public NotesAdapter(Context context, ArrayList<Note> notes) {
         this.context = context;
         this.notes = notes;
     }
-
 
     @NonNull
     @Override
@@ -90,7 +88,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
         return checkedNotes;
     }
 
-
     class NoteHolder extends RecyclerView.ViewHolder {
         TextView noteText, noteDate;
         CheckBox checkBox;
@@ -102,7 +99,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
             checkBox = itemView.findViewById(R.id.checkBox);
         }
     }
-
 
     public void setListener(NoteEventListener listener) {
         this.listener = listener;
