@@ -88,8 +88,8 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
     private void setupNavigation(Bundle savedInstanceState, Toolbar toolbar) {
 
         List<IDrawerItem<?>> iDrawerItems = new ArrayList<>();
-        iDrawerItems.add(new PrimaryDrawerItem().withName("홈 화면").withIcon(R.drawable.ic_home_black_24dp));
-        iDrawerItems.add(new PrimaryDrawerItem().withName("노트").withIcon(R.drawable.ic_note_black_24dp));
+        iDrawerItems.add(new PrimaryDrawerItem().withName("캘린더").withIcon(R.drawable.ic_home_black_24dp));
+        iDrawerItems.add(new PrimaryDrawerItem().withName("메모").withIcon(R.drawable.ic_note_black_24dp));
         iDrawerItems.add(new PrimaryDrawerItem().withName("폴더").withIcon(R.drawable.folder_gray));
         //call calender again
 
@@ -167,7 +167,6 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
 
     private void onAddNewNote() {
         startActivity(new Intent(this, EditNoteActivity.class));
-
     }
 
     @Override
@@ -186,7 +185,6 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
 
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onResume() {

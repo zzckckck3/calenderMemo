@@ -43,6 +43,7 @@
 
         <activity
             android:name=".MemoActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false"/>
 
         <activity
