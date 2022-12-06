@@ -46,7 +46,7 @@ public class Fragment_months extends Fragment {
         date_text = (TextView) v.findViewById(R.id.date_text);
         rv_schedule = (RecyclerView) v.findViewById(R.id.schedule);
 
-        // schedule view
+        // schedule recyclerview
         scheduleAdapter = new ScheduleAdapter(context);
         rv_schedule.setAdapter(scheduleAdapter);
         rv_schedule.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL,false));
@@ -87,11 +87,12 @@ public class Fragment_months extends Fragment {
                 date_text.setText(Integer.toString(year)+"년 "+Integer.toString(month)+"월 "+Integer.toString(day)+"일");
             }
         });
-        //dbloader = new DBLoader(context);
-        //scheduleAdapter.setList(dbloader.getScheduleList(calendarView.getSelectedDates().toString()));
-        //scheduleAdapter.notifyDataSetChanged();
         System.out.println(selectDay);
         return v;
+    }
+    public void updating(RecyclerView.ViewHolder viewHolder){
+        int position = viewHolder.getBindingAdapterPosition();
+        scheduleAdapter.notifyItemChanged(position);
     }
 
     @Override

@@ -33,8 +33,26 @@ public class DBLoader {
         db.close();
         Toast.makeText(context, "일정 저장", Toast.LENGTH_SHORT).show();
     }
+    //데이터 수정
+    public void updateData(ScheduleData data){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title",data.getTitle());
+        contentValues.put("start_date",data.getStart_date());
+        contentValues.put("finish_date",data.getFinish_date());
+        contentValues.put("start_time",data.getStart_time());
+        contentValues.put("finish_time",data.getFinish_time());
+        contentValues.put("location", data.getLocation());
+        /*String query = "UPDATE ScheduleList" +
+                "SET "+"title ='"+data.getTitle()+"'"+"start_date ='"+data.getStart_date()+"'"+
+                "finish_date ='"+data.getFinish_date()+"'"+"start_time ='"+data.getStart_time()+"'"+
+                "finish_time ='"+data.getFinish_time()+"'"+"location ='"+data.getTitle()+"'"+
+                "WHERE id="+data.getId();*/
+        db.getWritableDatabase().update("ScheduleList",contentValues,"id = ?", new String[]{Integer.toString(data.getId())});
+        db.close();
+    }
 
-    public void delete(int id){
+    //데이터 삭제
+    public void deleteData(int id){
         db.getWritableDatabase().delete("ScheduleList","id=?", new String[] {Integer.toString(id)});
         db.close();
     }

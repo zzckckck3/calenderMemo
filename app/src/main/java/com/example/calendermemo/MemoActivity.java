@@ -16,8 +16,6 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -25,8 +23,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendermemo.adapters.NotesAdapter;
-import com.example.calendermemo.adapters.callbacks.MainActionModeCallback;
-import com.example.calendermemo.adapters.callbacks.NoteEventListener;
+import com.example.calendermemo.db.callbacks.MainActionModeCallback;
+import com.example.calendermemo.db.callbacks.NoteEventListener;
 import com.example.calendermemo.db.NotesDB;
 import com.example.calendermemo.db.NotesDao;
 import com.example.calendermemo.model.Note;
@@ -342,6 +340,7 @@ public class MemoActivity extends AppCompatActivity implements NoteEventListener
         if (position == 1){
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
+            finish();
         }
         if(position == 3){
             Intent intent = new Intent(getApplicationContext(), AndroidExplorerActivity.class);

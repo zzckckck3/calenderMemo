@@ -4,7 +4,7 @@ import androidx.navigation.NavType;
 
 import java.io.Serializable;
 
-public class ScheduleData {
+public class ScheduleData implements Serializable{
     private int id;
     private String title;
     private String start_date;

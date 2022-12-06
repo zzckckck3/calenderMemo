@@ -24,10 +24,9 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
 
 public class add_schedule_Activity extends AppCompatActivity {
-    private ArrayList<ScheduleData> scheduleData;
+    private ScheduleData scheduleData = null;
     private DBLoader dbLoader;
     Button btn_start_date, btn_finish_date;
     Button btn_start, btn_finish;
@@ -62,6 +61,19 @@ public class add_schedule_Activity extends AppCompatActivity {
         btn_start_date.setText(String.valueOf(dateFormat.format(System.currentTimeMillis())));
         btn_finish_date.setText(String.valueOf(dateFormat.format(System.currentTimeMillis())));
         this.setListener();
+
+        // item 클릭 발생시 해당 스케줄의 data 를 받아옴
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            scheduleData = (ScheduleData) bundle.getSerializable("scheduleData");
+            title_text.setText(scheduleData.getTitle());
+            btn_start_date.setText(scheduleData.getStart_date());
+            btn_finish_date.setText(scheduleData.getFinish_date());
+            start_text.setText(scheduleData.getStart_time());
+            finish_text.setText(scheduleData.getFinish_time());
+            location_text.setText(scheduleData.getLocation());
+
+        }
     }
 
 
@@ -74,10 +86,17 @@ public class add_schedule_Activity extends AppCompatActivity {
                 int mMonth = c.get(Calendar.MONTH);
                 int mDay = c.get(Calendar.DAY_OF_MONTH);
 
+
                 DatePickerDialog datePickerDialog = new DatePickerDialog(add_schedule_Activity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        btn_start_date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                        String reDay;
+                        if(dayOfMonth < 10){
+                            reDay = "0"+ Integer.toString(dayOfMonth);
+                            btn_start_date.setText(year+"-"+(month+1)+"-"+reDay);
+                        }else{
+                            btn_start_date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                        }
                     }
                 },mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -95,7 +114,14 @@ public class add_schedule_Activity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(add_schedule_Activity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        btn_finish_date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                        String reDay;
+                        if(dayOfMonth < 10) {
+                            reDay = "0" + Integer.toString(dayOfMonth);
+                            btn_finish_date.setText(year+"-"+(month+1)+"-"+reDay);
+                        }else{
+                            btn_finish_date.setText(year+"-"+(month+1)+"-"+dayOfMonth);
+                        }
+
                     }
                 },mYear, mMonth, mDay);
                 datePickerDialog.show();
@@ -105,7 +131,7 @@ public class add_schedule_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
-                int mhour = c.get(Calendar.HOUR);
+                int mHour = c.get(Calendar.HOUR);
                 int mMinute = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(add_schedule_Activity.this,android.R.style.Theme_Holo_Light_DarkActionBar,new TimePickerDialog.OnTimeSetListener() {
@@ -113,7 +139,7 @@ public class add_schedule_Activity extends AppCompatActivity {
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                         start_text.setText(String.format("%02d:%02d",hourOfDay,minute));
                     }
-                }, mhour, mMinute,true);
+                }, mHour, mMinute,true);
                 timePickerDialog.setTitle("시작");
                 timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 timePickerDialog.show();
@@ -124,7 +150,7 @@ public class add_schedule_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
-                int mhour = c.get(Calendar.HOUR);
+                int mHour = c.get(Calendar.HOUR);
                 int mMinute = c.get(Calendar.MINUTE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(add_schedule_Activity.this,android.R.style.Theme_Holo_Light_DarkActionBar,new TimePickerDialog.OnTimeSetListener() {
@@ -132,14 +158,16 @@ public class add_schedule_Activity extends AppCompatActivity {
                     public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
                         finish_text.setText(String.format("%02d:%02d",hourOfDay,minute));
                     }
-                }, mhour, mMinute,true);
+                }, mHour, mMinute,true);
                 timePickerDialog.setTitle("종료");
                 timePickerDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                 timePickerDialog.show();
             }
         });
 
-        /*btn_alarm.setOnClickListener(new View.OnClickListener() {
+        /*
+        //알람 버튼 클릭시
+        btn_alarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
@@ -179,12 +207,18 @@ public class add_schedule_Activity extends AppCompatActivity {
                 String finish_time = finish_text.getText().toString();
                 String location = location_text.getText().toString();
 
-
                 if(!title.equals("")){
-                    dbLoader.save(title,start_date,finish_date,start_time,finish_time,location);
-                    Intent intent = new Intent(this,MainActivity.class);
-                    Toast.makeText(add_schedule_Activity.this, "저장 완료", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if(scheduleData != null){
+                        dbLoader.updateData(scheduleData);
+                        Intent intent = new Intent(this,MainActivity.class);
+                        Toast.makeText(this, "수정 완료", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }else{
+                        dbLoader.save(title,start_date,finish_date,start_time,finish_time,location);
+                        Intent intent = new Intent(this,MainActivity.class);
+                        Toast.makeText(add_schedule_Activity.this, "저장 완료", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 }
                 else{
                     Intent intent = new Intent(this,MainActivity.class);

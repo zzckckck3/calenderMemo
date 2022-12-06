@@ -1,6 +1,8 @@
 package com.example.calendermemo.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendermemo.R;
+import com.example.calendermemo.add_schedule_Activity;
 import com.example.calendermemo.model.ScheduleData;
 
 import java.util.ArrayList;
@@ -35,6 +38,18 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         ScheduleData data = scheduleList.get(position);
         holder.layoutSchedule.setVisibility(View.VISIBLE);
+        // recyclerview 에서 item 클릭시 스케줄 수정
+        holder.layoutSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent scheduleActivity = new Intent(context, add_schedule_Activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("scheduleData",data);
+                scheduleActivity.putExtras(bundle);
+                context.startActivity(scheduleActivity);
+            }
+        });
+
         holder.title_text.setText(data.getTitle());
         holder.startTime_text.setText(data.getStart_time());
         holder.finishTime_text.setText(data.getFinish_time());
@@ -52,7 +67,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
         ConstraintLayout layoutSchedule;
         TextView title_text,startTime_text,finishTime_text,location_text;
 
@@ -64,6 +79,5 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
             finishTime_text = (TextView) view.findViewById(R.id.finish_text);
             location_text = (TextView) view.findViewById(R.id.location_text);
         }
-
     }
 }
